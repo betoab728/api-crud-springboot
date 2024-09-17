@@ -43,20 +43,31 @@ public class AlumnoService {
     public Optional<Alumno> getById(Integer id) {
         return alumnoRepository.findById(id);
     }
+    //login de usuario recibe nombre de usuario y contraseña
+
+
+
 
     public Alumno updateById(Alumno request, Integer id ) {
-        Alumno alumno = alumnoRepository.findById(id).get();
-        alumno.setNombre(request.getNombre());
-        alumno.setApellidoPaterno(request.getApellidoPaterno());
-        alumno.setApellidoMaterno(request.getApellidoMaterno());
-        alumno.setSexo(request.getSexo());
-        alumno.setDireccion(request.getDireccion());
-        alumno.setCorreo(request.getCorreo());
-        alumno.setTelefono(request.getTelefono());
-        alumno.setFechaNacimiento(request.getFechaNacimiento());
-        alumno.setEstado(request.getEstado());
+       try {
+          //update alumno
 
-        return alumno;
+           Alumno alumno = alumnoRepository.findById(id).get();
+           alumno.setNombre(request.getNombre());
+           alumno.setApellidoPaterno(request.getApellidoPaterno());
+           alumno.setApellidoMaterno(request.getApellidoMaterno());
+           alumno.setSexo(request.getSexo());
+           alumno.setDireccion(request.getDireccion());
+           alumno.setCorreo(request.getCorreo());
+           alumno.setTelefono(request.getTelefono());
+           alumno.setFechaNacimiento(request.getFechaNacimiento());
+           alumno.setEstado(request.getEstado());
+
+           return alumnoRepository.save(alumno);
+
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public Boolean deleteAlumno(Integer id){

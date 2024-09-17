@@ -7,4 +7,7 @@ import utp.crud.crudAlumno.model.Alumno;
 
 @Repository
 public interface AlumnoRepository extends JpaRepository<Alumno, Integer> {
+
+
+
 }
